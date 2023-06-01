@@ -1,0 +1,69 @@
+.text,
+.points {
+  color: #ffffff;
+  text-align: center;
+  padding-top: 50px;
+  font-weight: 600;
+}
+
+.pointsText {
+  padding-top: 0px;
+  margin-right: 15px;
+  font-weight: 800;
+}
+
+.muPoints {
+  padding: 0 80px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.homepage {
+  background-image: url("../../public/images/background-dark.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 95vh;
+  width: 100%;
+}
+
+.rewardSection {
+  display: flex;
+  justify-content: center;
+}
+
+.rewardSection a {
+  display: block;
+  text-align: center;
+  font-size: 27px;
+  color: #ffffff;
+  font-weight: 600;
+  width: 205px;
+}
+
+.redeemButton {
+  float: right;
+  background: #f05423;
+  color: #ffffff;
+  border-radius: 25px;
+  padding: 10px 30px;
+  margin-right: 30px;
+  margin-top: -50px;
+  font-weight: 600;
+}
+
+.logoutButton {
+  background: transparent;
+  color: #ffffff;
+  border-radius: 25px;
+  padding: 10px 30px;
+  margin-left: 30px;
+  margin-top: 200px;
+  font-weight: 600;
+  border: 2px solid #f05423;
+}
+
+.redeemButton:hover,
+.logoutButton:hover {
+  background: #000000;
+}
