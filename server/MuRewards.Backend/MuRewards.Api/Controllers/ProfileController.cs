@@ -14,10 +14,10 @@ namespace MuRewards.Api.Controllers
             _profileManager = profileManager;
         }
 
-        [HttpGet("email")]
-        public IActionResult GetProfile(string email)
+        [HttpGet("{email}")]
+        public async Task<IActionResult> GetProfile(string email)
         {
-            var result = _profileManager.GetProfileByEmail(email);
+            var result = await _profileManager.GetProfileByEmail(email);
             return Ok(result);
         }
     }
