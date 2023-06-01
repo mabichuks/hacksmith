@@ -8,13 +8,12 @@ namespace MuRewards.Core.Models
 {
     public class ResponseModel<T>
     {
-        public string Code { get; set; }
         public bool Succeeded { get; set; }
         public string Message { get; set; }
         public T Data { get; set; }
     }
 
-    public class Response : ResponseModel<object>
+    public class ResponseModel : ResponseModel<object>
     {
 
     }
