@@ -24,6 +24,7 @@ namespace MuRewards.Api.Extensions
 
             //managers
             services.AddScoped<IProfileManager, ProfileManager>();
+            services.AddScoped<ICatalogManager, CatalogManager>();
 
         }
 

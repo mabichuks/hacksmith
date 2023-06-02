@@ -16,6 +16,7 @@ namespace MuRewards.Infrastructure.Repos
         public IWalletRepo WalletRepo => new WalletRepo(_context);
         public IWalletTransactionRepo WalletTransactionRepo => new WalletTransactionRepo(_context);
         public IRewardRequestRepo RewardRequestRepo => new RewardRequestRepo(_context);
+        public ICatalogRepository CatalogRepository => new CatalogRepository(_context);
 
         public UnitOfWork(MuRewardsContext context)
         {
