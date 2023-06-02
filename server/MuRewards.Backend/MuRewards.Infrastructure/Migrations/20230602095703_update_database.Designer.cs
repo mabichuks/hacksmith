@@ -12,8 +12,8 @@ using MuRewards.Infrastructure;
 namespace MuRewards.Infrastructure.Migrations
 {
     [DbContext(typeof(MuRewardsContext))]
-    [Migration("20230601125002_Initial")]
-    partial class Initial
+    [Migration("20230602095703_update_database")]
+    partial class update_database
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -166,11 +166,9 @@ namespace MuRewards.Infrastructure.Migrations
 
             modelBuilder.Entity("MuRewards.Core.Entities.WalletTransaction", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DateTimeStamp")
                         .HasColumnType("datetime2");

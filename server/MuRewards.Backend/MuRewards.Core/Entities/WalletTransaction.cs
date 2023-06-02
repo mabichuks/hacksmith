@@ -8,7 +8,7 @@ namespace MuRewards.Core.Entities
 {
     public class WalletTransaction
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public Guid MuWalletId { get; set; }
         public DateTime DateTimeStamp { get; set; }
         public decimal MuPoints { get; set; }
