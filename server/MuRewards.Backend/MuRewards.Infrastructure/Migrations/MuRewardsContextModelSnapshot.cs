@@ -164,11 +164,9 @@ namespace MuRewards.Infrastructure.Migrations
 
             modelBuilder.Entity("MuRewards.Core.Entities.WalletTransaction", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DateTimeStamp")
                         .HasColumnType("datetime2");

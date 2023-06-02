@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MuRewards.Infrastructure.Migrations
 {
-    public partial class Initial : Migration
+    public partial class update_database : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -98,8 +98,7 @@ namespace MuRewards.Infrastructure.Migrations
                 name: "WalletTransactions",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     MuWalletId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DateTimeStamp = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MuPoints = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
