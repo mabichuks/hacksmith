@@ -38,6 +38,7 @@ namespace MuRewards.Core.Managers
                 var itemIds = cart.Items.Select(x => x.ItemId).ToList();
                 var items = _uow.CatalogRepository
                     .Find(x => itemIds.Contains(x.Id.ToString()))
+                    .ToList()
                     .Join(cart.Items, cat => cat.Id.ToString(), item => item.ItemId, 
                             (cat, item) => new
                     {

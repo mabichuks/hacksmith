@@ -9,7 +9,7 @@ namespace MuRewards.Core.Models
     public class UpdateRequestStatusModel
     {
         public Guid RequestId { get; set; }
-        public string Status { get; set; }
+        public Status Status { get; set; }
         public string Comments { get; set;}
     }
 }

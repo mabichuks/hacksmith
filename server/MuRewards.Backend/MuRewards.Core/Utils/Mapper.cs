@@ -65,5 +65,19 @@ namespace MuRewards.Core.Utils
                 Value = catalog.Value
             };
         }
+
+
+        public static MuWalletModel ToModel(this MuWallet model)
+        {
+            if (model == null) return null;
+
+            return new MuWalletModel
+            {
+                Id = model.Id,
+                MuPoints = model.MuPoints,
+                ProfileId = model.ProfileId,
+                WalletType = model.WalletType
+            };
+        }
     }
 }
