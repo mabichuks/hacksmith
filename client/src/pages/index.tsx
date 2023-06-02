@@ -10,8 +10,9 @@ import {
 import Head from "next/head";
 import LoginPageStyles from "../styles/Home.module.css";
 import Header from "../components/Header/Header";
-import Link from "next/link";
 import { Form, Formik } from "formik";
+import { useRouter } from "next/router";
+import { push } from "@/utils";
 
 const defaultValues = {
   emailAddress: "",
@@ -23,15 +24,26 @@ type ILoginValues = {
   password: string;
 };
 
-const handleSubmit = (values: ILoginValues) => {
-  console.log("Logging in....", values);
+const data = {
+  id: 2843,
+  email: "theadedoyin@gmail.com",
+  name: "Tolulope Adedoyin",
+  isAdmin: true,
+  earnedPoints: 500,
 };
 
 const LoginPage = () => {
+  const router = useRouter();
+
+  const handleSubmit = (values: ILoginValues) => {
+    console.log("Logging in....", values);
+    push(router, "/home", data);
+  };
+
   return (
     <>
       <Head>
-        <title>Sign in to Watchlist</title>
+        <title>Sign in to MuRewards</title>
         <meta name="description" content="Login Page" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -86,11 +98,6 @@ const LoginPage = () => {
                       >
                         Login
                       </Button>
-                      <Divider color={"#FFFFFF"} />
-                      <Typography mt={4} className={LoginPageStyles.labelText}>
-                        Do you want to signup?
-                      </Typography>
-                      <Button>Sign Up</Button>
                     </Form>
                   )}
                 </Formik>
