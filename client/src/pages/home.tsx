@@ -11,24 +11,33 @@ import Image from "next/image";
 import { push } from "@/utils";
 
 export interface IEmployeeData {
-  name: string;
+  Id: string;
+  Email: string;
+  FirstName: string;
+  IsManager: string;
+  LastName: string;
   earnedPoints: number;
-  id: string;
-  isAdmin: string;
 }
 
 const HomePage = () => {
   const [newData, setNewData] = useState<IEmployeeData>();
+  const [walletBalance, setWalletBalance] = useState();
   const router = useRouter();
   const data = router.query;
   const handleClick = () => {
-    if (data.name !== undefined) {
+    if (data.FirstName !== undefined) {
       localStorage.setItem("employeeData", JSON.stringify(data));
     } else {
       localStorage.setItem("employeeData", JSON.stringify(newData));
     }
-    push(router, "/redeem", data.name !== undefined ? data : newData);
+    push(router, "/redeem", data.FirstName !== undefined ? data : newData);
   };
+
+  console.log(data);
+
+  // data?.MuWallets?.map((item: any) => {
+  //   console.log(item);
+  // });
 
   const logout = () => {
     localStorage.removeItem("employeeData");
@@ -36,7 +45,7 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    if (data.name !== undefined) {
+    if (data.FirstName !== undefined) {
       localStorage.setItem("employeeData", JSON.stringify(data));
     } else {
       const employeeData = JSON.parse(
@@ -57,17 +66,18 @@ const HomePage = () => {
       </Head>
       <Header />
       <Fragment>
-        {data.name !== undefined ? (
+        {data.FirstName !== undefined ? (
           <Box className={ProfileStyles.homepage}>
             <Typography
               variant="h3"
               gutterBottom
               className={ProfileStyles.text}
             >
-              {`Welcome ${data.name || newData?.name}`}
+              {`Welcome ${data.FirstName} ${data.FirstName}` ||
+                `${data.FirstName} ${data.FirstName}`}
             </Typography>
 
-            {data.isAdmin !== "false" ? (
+            {data.IsManager !== "false" ? (
               <Box className={ProfileStyles.rewardSection}>
                 <Box>
                   <Image src={Rewards} alt="Icons" width={200} height={200} />
@@ -119,7 +129,7 @@ const HomePage = () => {
                 Redeem MuPoints
               </Button>
             </Box>
-            {data.isAdmin !== "false" ? (
+            {data.IsManager !== "false" ? (
               <Box
                 sx={{
                   display: "flex",
@@ -192,10 +202,10 @@ const HomePage = () => {
               gutterBottom
               className={ProfileStyles.text}
             >
-              {`Welcome ${newData?.name}`}
+              {`Welcome ${newData?.FirstName} ${newData?.LastName}`}
             </Typography>
 
-            {newData?.isAdmin !== "false" ? (
+            {newData?.IsManager !== "false" ? (
               <Box className={ProfileStyles.rewardSection}>
                 <Box>
                   <Image src={Rewards} alt="Icons" width={200} height={200} />
@@ -247,7 +257,7 @@ const HomePage = () => {
                 Redeem MuPoints
               </Button>
             </Box>
-            {newData?.isAdmin !== "false" ? (
+            {newData?.IsManager !== "false" ? (
               <Box
                 sx={{
                   display: "flex",

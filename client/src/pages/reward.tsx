@@ -18,6 +18,8 @@ import Header from "@/components/Header/Header";
 import SelectField from "@/components/SelectField/SelectField";
 import { MUKURU_VALUES, MUPOINTS } from "@/constants";
 import { useRouter } from "next/router";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const defaultValues = {
   muPoints: "",
@@ -50,7 +52,22 @@ const EmployeeSearch = () => {
       name: rows[0].name,
     };
     console.log(body);
-    router.push("/home");
+
+    toast("Thank you. Your rewards request has been sent.", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    const push = () => {
+      router.push("/home");
+    };
+
+    setTimeout(push, 4000);
   }
 
   const columns: GridColDef[] = [
@@ -194,6 +211,7 @@ const EmployeeSearch = () => {
               </Box>
             </CardContent>
           )}
+          <ToastContainer />
         </Grid>
       </Box>
     </>
