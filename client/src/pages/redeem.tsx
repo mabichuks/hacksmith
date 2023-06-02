@@ -2,7 +2,6 @@
 import Stack from "@mui/material/Stack";
 import styles from "../styles/reward.module.css";
 import { Formik, Form } from "formik";
-import CircularProgress from "@mui/material/CircularProgress";
 import {
   Box,
   Button,
@@ -23,45 +22,93 @@ import Header from "@/components/Header/Header";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { IEmployeeData } from "./home";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 const rows = [
   {
-    id: 1,
+    id: "sdjo412293bdk",
     item: "https://i.postimg.cc/HJnv1BdP/image-4.png",
     detail: "Mukuru Branded Hoodie",
     muPoint: 300,
   },
   {
-    id: 2,
+    id: "27dauduebca2ka",
     item: "https://i.postimg.cc/dhCpDm9g/uberEats.png",
     detail: "Uber Eats",
-    muPoint: 200,
+    muPoint: 100,
   },
   {
-    id: 3,
+    id: "034h-dhwida",
     item: "https://i.postimg.cc/7bLRSyV3/gift-card.png",
     detail: "Gift Card",
     muPoint: 100,
   },
   {
-    id: 4,
+    id: "74ndladw-dfo",
     item: "https://i.postimg.cc/DS6fMywP/mug.jpg",
     detail: "Mukuru Branded Mug",
-    muPoint: 30,
+    muPoint: 25,
   },
 ];
+
+type IRedeemBody = {
+  userId: string | string[] | undefined;
+  items: [
+    {
+      ItemId: string;
+      Quantity: number;
+    }
+  ];
+};
 
 const RedeemComponent = () => {
   const router = useRouter();
   const [newData, setNewData] = useState<IEmployeeData>();
   const data = router.query;
-  console.log(data);
+
   async function handleRedeemSubmit(values: { selectedItems: any }) {
-    const body = {
-      item: values.selectedItems,
+    const body: IRedeemBody = {
+      userId: "",
+      items: [],
     };
+
+    values.selectedItems.map((item: { id: any }) => {
+      (body.userId = data.Id || newData?.Id),
+        body.items.push({
+          ItemId: item.id,
+          Quantity: 1,
+        });
+    });
+
+    axios
+      .post("http://localhost:5021/api/v1/checkout", body)
+      .then((response) => {
+        console.log(response);
+      });
+
     console.log(body);
-    router.push("/home");
+
+    toast(
+      "Thank you. You redeem request has been sent for further processing.",
+      {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      }
+    );
+
+    const push = () => {
+      router.push("/home");
+    };
+
+    setTimeout(push, 4000);
   }
 
   useEffect(() => {
@@ -75,6 +122,18 @@ const RedeemComponent = () => {
       setNewData(employeeData);
     }
   }, []);
+
+  //   useEffect(() => {
+  //     fetch(`https://api.github.com/users/eunit99/repos`)
+  //       .then((response) => response.json())
+  //       .then((usefulData) => {
+  //         console.log(usefulData);
+  //         setApiData(usefulData);
+  //       })
+  //       .catch((e) => {
+  //         console.error(`An error occurred: ${e}`);
+  //       });
+  //   });
 
   const onRowsSelectionHandler = (
     e: GridRowSelectionModel,
@@ -101,7 +160,6 @@ const RedeemComponent = () => {
       headerClassName: "super-app-theme--header",
       width: 300,
       sortable: false,
-      valueGetter: (params: GridValueGetterParams) => `${params.row.item}`,
       renderCell: (params) => {
         return (
           <Grid item xs={12} sm={12}>
@@ -192,6 +250,7 @@ const RedeemComponent = () => {
             </CardContent>
           )}
         </Grid>
+        <ToastContainer />
       </Box>
     </>
   );

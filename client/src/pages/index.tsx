@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import {
   Button,
   Checkbox,
@@ -13,6 +13,7 @@ import Header from "../components/Header/Header";
 import { Form, Formik } from "formik";
 import { useRouter } from "next/router";
 import { push } from "@/utils";
+import { IEmployeeData } from "./home";
 
 const defaultValues = {
   emailAddress: "",
@@ -24,21 +25,33 @@ type ILoginValues = {
   password: string;
 };
 
-const data = {
-  id: 2843,
-  email: "theadedoyin@gmail.com",
-  name: "Tolulope Adedoyin",
-  isAdmin: true,
+const data: IEmployeeData = {
+  Id: "2843",
+  Email: "theadedoyin@gmail.com",
+  FirstName: "Adedoyin",
+  IsManager: "true",
+  LastName: "Tolulope",
   earnedPoints: 500,
 };
 
 const LoginPage = () => {
   const router = useRouter();
+  const [apiData, setApiData] = useState(null);
 
   const handleSubmit = (values: ILoginValues) => {
     console.log("Logging in....", values);
+    fetch(`http://localhost:5021/api/v1/profile/${values.emailAddress}`)
+      .then((response) => response.json())
+      .then((employeeData) => {
+        console.log(employeeData.Data);
+        setApiData(employeeData.Data);
+      })
+      .catch((e) => {
+        console.error(`An error occurred: ${e}`);
+      });
     push(router, "/home", data);
   };
+  // console.log(apiData);
 
   return (
     <>
