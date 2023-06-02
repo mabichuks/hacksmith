@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace MuRewards.Core.Interfaces
 {
-    public interface IRewardRequestRepo: IBaseRepository<RewardRequest>
+    public interface IRewardRequestRepo : IBaseRepository<RewardRequest>
     {
+        Task<RewardRequest> Get(Guid requestId);
     }
 }

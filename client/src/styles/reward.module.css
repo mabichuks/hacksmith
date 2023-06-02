@@ -1,0 +1,57 @@
+.main {
+  padding: 0 40px;
+}
+
+.cardSection {
+  margin-top: 20px;
+}
+
+.searchSection {
+  padding: 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.searchField input {
+  border-radius: 25px;
+  background: #edeef2;
+}
+
+.searchField {
+  width: 800px;
+}
+
+.searchButton {
+  background: #f05423;
+  color: #ffffff;
+  border-radius: 25px;
+  padding: 10px 30px;
+  margin-right: 30px;
+  font-weight: 600;
+}
+
+.searchButton:hover,
+.rewardButton:hover {
+  background: #000000;
+}
+
+.selectField {
+  width: 500px;
+}
+
+.rewardButton {
+  float: right;
+  background: #f05423;
+  color: #ffffff;
+  border-radius: 25px;
+  padding: 10px 30px;
+  margin-right: 30px;
+  margin-top: 50px;
+  font-weight: 600;
+}
+
+.redeemContainer {
+  display: flex;
+  justify-content: space-between;
+}

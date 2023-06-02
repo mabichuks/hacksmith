@@ -14,5 +14,10 @@ namespace MuRewards.Infrastructure.Repos
         public RewardRequestRepo(MuRewardsContext context) : base(context)
         {
         }
+
+        public async Task<RewardRequest> Get(Guid requestId)
+        {
+            return await _context.Set<RewardRequest>().FindAsync(requestId);
+        }
     }
 }
