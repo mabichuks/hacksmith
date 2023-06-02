@@ -26,5 +26,29 @@ namespace MuRewards.Core.Utils
                 ManagerId = profile.ManagerId,
             };
         }
+
+        public static RewardRequestModel ToModel(this RewardRequest pagedRewards)
+        {
+            if (pagedRewards == null) return null;
+
+            MuRewards.Core.Models.Status status;
+
+            if (!Enum.TryParse(pagedRewards.Status, out status))
+            {
+                status = MuRewards.Core.Models.Status.Pending;
+            }
+
+            return new RewardRequestModel
+            {
+                Id = pagedRewards.Id,
+                RequesterId = pagedRewards.RequesterId,
+                AwardeeId = pagedRewards.AwardeeId,
+                ManagerId = pagedRewards.ManagerId,
+                Comments = pagedRewards.Comments,
+                Status = status,
+                 MuPoints = pagedRewards.MuPoints,
+                 CreatedOn = pagedRewards.CreatedOn,
+             };
+        }
     }
 }
