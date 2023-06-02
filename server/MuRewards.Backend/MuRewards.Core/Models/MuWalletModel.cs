@@ -10,7 +10,7 @@ namespace MuRewards.Core.Models
     {
         public Guid Id { get; set; }
         public Guid ProfileId { get; set; }
-        public WalletType WalletType { get; set; }
+        public string WalletType { get; set; }
         public decimal MuPoints { get; set; }
         public ProfileModel Profile { get; set; }
     }

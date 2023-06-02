@@ -1,0 +1,88 @@
+.homepage {
+  background-image: url("../../public/images/background-dark.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 95vh;
+  width: 100%;
+}
+
+.card {
+  background: rgb(75, 75, 75, 0.8);
+  box-shadow: 0px 0px 100px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  padding: 150px 49px;
+  color: #ffffff;
+  height: 70vh;
+}
+
+.card h2 {
+  font-size: 52px;
+  line-height: 70px;
+  margin-top: 108px;
+}
+
+.card button {
+  background-color: #fc4f1e;
+  border-radius: 40px;
+  margin-top: 24px;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 10px 80px;
+  cursor: pointer;
+  font-weight: 600;
+  width: 420px;
+}
+
+.loginButton {
+  margin-bottom: 20px;
+}
+
+.card button:hover {
+  background-color: #000000;
+}
+
+.card input {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 25px;
+}
+
+.loginContainer {
+  background: url("../../public/images/loginImage.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  width: 56vw;
+  border-radius: 25px;
+  justify-content: space-between;
+}
+
+@media (max-width: 1140px) {
+  .flexContainer {
+    display: none;
+  }
+  .card {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .card h2 {
+    font-size: 32px;
+    margin-top: 180px;
+    line-height: 40px;
+  }
+
+  .card button {
+    padding: 10px 20px;
+    margin-top: 0;
+  }
+}

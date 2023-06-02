@@ -15,13 +15,13 @@ namespace MuRewards.Core.Managers
             _uow = uow;
         }
 
-        public async Task<ResponseModel> GetRewardsByManagerId(Guid managerId, string email = null, int page = 1, int pageSize = 10)
+        public async Task<ResponseModel> GetRewardsByManagerId(string managerId, string email = null, int page = 1, int pageSize = 10)
         {
             try
             {
                 var allRewards = await _uow.RewardRequestRepo.GetAllAsync();
 
-                var rewards = allRewards.Where(x => x.ManagerId == managerId);
+                var rewards = allRewards.Where(x => x.ManagerId == Guid.Parse(managerId));
 
                 var pagedRewards = rewards.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
@@ -60,7 +60,7 @@ namespace MuRewards.Core.Managers
                     };
                 }
 
-                request.Status = updateModel.Status;
+                request.Status = updateModel.Status.ToString();
 
                 _uow.RewardRequestRepo.UpdateAsync(request);
                 await _uow.CompleteAsync();

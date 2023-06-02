@@ -15,14 +15,14 @@ namespace MuRewards.Api.Controllers
             _rewardManager = rewardManager;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetRewards([FromQuery] Guid managerId, [FromQuery] string email = null, [FromQuery] int page = 1, [FromQuery] int pageSize = 10)
+        [HttpGet("")]
+        public async Task<IActionResult> GetRewards([FromQuery] string managerId, [FromQuery] string email = null, [FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
             var result = await _rewardManager.GetRewardsByManagerId(managerId, email, page, pageSize);
             return Ok(result);
         }
 
-        [HttpPut("update-status")]
+        [HttpPost("update-status")]
         public async Task<IActionResult> UpdateRequestStatus([FromBody] UpdateRequestStatusModel updateModel)
         {
             var response = await _rewardManager.UpdateRequestStatus(updateModel);

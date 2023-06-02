@@ -21,7 +21,21 @@ namespace MuRewards.Core.Managers
             try
             {
                 var profile = await _uow.ProfileRepo.SingleOrDefaultAync(x => x.Email.ToLower() == email.ToLower());
+                if (profile == null)
+                {
+                    return new ResponseModel
+                    {
+                        Succeeded = false,
+                       Message = "profile not found"
+                    };
+                }
+
+                var wallet = _uow.WalletRepo.Find(x => x.ProfileId == profile.Id)
+                        .Select(x => x.ToModel()).ToList();
+
+
                 var response = profile.ToModel();
+                response.MuWallets = wallet;
 
                 return new ResponseModel
                 {

@@ -12,7 +12,7 @@ namespace MuRewards.Core.Interfaces
         IWalletRepo WalletRepo { get; }
         IWalletTransactionRepo WalletTransactionRepo { get; }
         IRewardRequestRepo RewardRequestRepo { get; }
-
+        ICatalogRepository CatalogRepository { get; }
         int Complete();
         Task<int> CompleteAsync();
     }

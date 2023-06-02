@@ -50,5 +50,34 @@ namespace MuRewards.Core.Utils
                  CreatedOn = pagedRewards.CreatedOn,
              };
         }
+
+        public static CatalogModel ToModel(this  Catalog catalog)
+        {
+            if (catalog == null) return null;
+
+            return new CatalogModel
+            {
+                Details = catalog.Details,
+                Id =  catalog.Id,
+                ImageUrl = catalog.ImageUrl,
+                ItemCount = catalog.ItemCount,
+                ItemName = catalog.ItemName,
+                Value = catalog.Value
+            };
+        }
+
+
+        public static MuWalletModel ToModel(this MuWallet model)
+        {
+            if (model == null) return null;
+
+            return new MuWalletModel
+            {
+                Id = model.Id,
+                MuPoints = model.MuPoints,
+                ProfileId = model.ProfileId,
+                WalletType = model.WalletType
+            };
+        }
     }
 }

@@ -16,5 +16,7 @@ namespace MuRewards.Core.Models
         public string? ManagerId { get; set; }
         public DateTime DoB { get; set; }
         public DateTime CreatedOn { get; set; }
+        public IEnumerable<MuWalletModel> MuWallets { get; set; } = Enumerable.Empty<MuWalletModel>();
+
     }
 }

@@ -9,7 +9,7 @@ namespace MuRewards.Core.Interfaces
 {
     public interface IRewardRequestManager
     {
-        Task<ResponseModel> GetRewardsByManagerId(Guid managerId, string email = null, int page = 1, int pageSize = 10);
+        Task<ResponseModel> GetRewardsByManagerId(string managerId, string email = null, int page = 1, int pageSize = 10);
         Task<ResponseModel> UpdateRequestStatus(UpdateRequestStatusModel updateModel);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MuRewards.Core.Entities;
 using MuRewards.Core.Interfaces;
+using MuRewards.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,6 @@ namespace MuRewards.Infrastructure.Repos
         public WalletRepo(MuRewardsContext context) : base(context)
         {
         }
+
     }
 }
